@@ -1,1 +1,28 @@
-1
+class ImageResizer:
+    def resize(self, width, height):
+        print(f"Змінення розміру зображення до {width}x{height}.")
+
+class FilterApplier:
+    def apply_filter(self, filter_name):
+        print(f"Застосування фільтра: {filter_name}.")
+
+class ImageSaver:
+    def save(self, filename):
+        print(f"Збереження зображення у файл: {filename}.")
+
+class ImageProcessingFacade:
+    def __init__(self):
+        self.resizer = ImageResizer()
+        self.filter_applier = FilterApplier()
+        self.saver = ImageSaver()
+
+    def process_and_save(self, filename, width, height, filter_name):
+        print("Початок обробки зображення...")
+        self.resizer.resize(width, height)
+        self.filter_applier.apply_filter(filter_name)
+        self.saver.save(filename)
+        print("Обробку завершено успішно.")
+
+if __name__ == "__main__":
+    facade = ImageProcessingFacade()
+    facade.process_and_save("summer_vacation.jpg", 1920, 1080, "sepia")
